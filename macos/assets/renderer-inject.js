@@ -122,17 +122,18 @@
 
     let variables;
     if (shell === "light") {
-      // Structural tokens stay light so banners stay readable; accents follow theme.
+      // Light themes may provide their own structural palette; keep safe light
+      // defaults for older theme.json files that only define accent colors.
       variables = {
-        "--ds-bg": "#f6f2f3",
-        "--ds-panel": "#ffffff",
-        "--ds-panel-2": "#fff7f8",
+        "--ds-bg": colors.background || "#f6f2f3",
+        "--ds-panel": colors.panel || "#ffffff",
+        "--ds-panel-2": colors.panelAlt || "#fff7f8",
         "--ds-green": accent,
         "--ds-lime": accentAlt,
         "--ds-cyan": secondary,
         "--ds-purple": highlight,
-        "--ds-text": "#1f1a1b",
-        "--ds-muted": "#6b5f62",
+        "--ds-text": colors.text || "#1f1a1b",
+        "--ds-muted": colors.muted || "#6b5f62",
         "--ds-line": colors.line || "rgba(196, 120, 128, .22)",
       };
     } else {
